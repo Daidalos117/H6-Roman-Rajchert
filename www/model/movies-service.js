@@ -7,20 +7,15 @@ app.factory('MoviesService', function ($http, APP_CONFIG,$resource) {
 
         service.getMovies = function (callback) {
 
-
                 if(!~service.pages.indexOf(service.page) ) {
                     service.pages.push(service.page);
                     service.page += 1;
-
-
 
                     $resource(APP_CONFIG.getApiUrl("moviesPopular","") + "&page=" + service.page, {}, {
                         query: {
                             isArray: false
                         }
                     }).query().$promise.then(function (result) {
-                        
-
                         service.data = service.data.concat(result.results);
                     });
 
@@ -40,13 +35,9 @@ app.factory('MoviesService', function ($http, APP_CONFIG,$resource) {
                 }
             }).query().$promise;
 
-
-
         };
         
       
-
-
         
         service.watchedMovies = [];
         service.getWatchedMoviesFromStorage = function () {

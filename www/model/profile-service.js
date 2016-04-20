@@ -11,20 +11,35 @@ app.factory('ProfileService', function ($http, APP_CONFIG,$cordovaSQLite,$ionicP
             $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS profile (id integer primary key, name text,email text, description text, image text)");
             $cordovaSQLite.execute(db, "INSERT INTO profile values(1,'John', 'john@ss.com', 'Nevermind','')");
 
+            /**
+             * Add info about user to databse
+             */
             service.addInfo = function () {
                 //$cordovaSQLite.execute(db, "INSERT INTO profile values(1,'Roman', 'Rajchert')");
             }
+
+            /**
+             * Updates info about user
+             * @param data
+             */
             service.updateInfo = function (data) {
                 $cordovaSQLite.execute(db, "UPDATE profile SET name=?, email=?,description=?",
                     [data.name, data.email, data.description]);
             }
 
+            /**
+             * Updates image
+             * @param image
+             */
             service.updateImage = function (image) {
                 $cordovaSQLite.execute(db, "UPDATE profile SET image",
                     [image]);
             }
 
-
+            /**
+             * Getting info
+             * @returns {*}
+             */
             service.getInfo = function () {
                 return $cordovaSQLite.execute(db, "SELECT * FROM profile where ID=1");
             }
