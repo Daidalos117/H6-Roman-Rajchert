@@ -1,0 +1,36 @@
+<ion-view title="{{movie.title}}" id="view-movies-detail">
+    <ion-content>
+       <ion-list>
+           <ion-item>
+               <form name="authorizationForm" novalidate="" ng-submit="form()">
+               <label class="item item-input">
+                   <span class="input-label">Username</span>
+                   <input type="text" ng-model="data.name">
+               </label>
+               <label class="item item-input">
+                   <span class="input-label">E-mail</span>
+                   <input type="text" ng-model="data.email">
+               </label>
+               <label class="item item-input">
+                   <span class="input-label">Description</span>
+                   <textarea ng-model="data.description"></textarea>
+               </label>
+
+               <button class="button button-full button-light" ng-click="camera()">
+                   Camera
+               </button>
+
+                   <h2>There will be your new image</h2>
+                   <img ng-src="{{imageData}}" style="width: 100%;height: 100%">
+
+
+               <button class="button button-full button-positive" type="submit">
+                   Uložit
+               </button>
+               </form>
+           </ion-item>
+
+       </ion-list>
+
+    </ion-content>
+</ion-view>

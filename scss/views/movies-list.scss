@@ -1,0 +1,10 @@
+.button-bar{
+    background-color: $positive;
+    padding-top: 1px;
+}
+
+.reverse.ion-arrow-up-b:before {
+     -ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Safari */
+    transform: rotate(180deg);
+}

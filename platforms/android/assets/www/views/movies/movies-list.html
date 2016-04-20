@@ -1,0 +1,38 @@
+<ion-view title="Movie list" id="view-movies-list">
+    <ion-content overflow-scroll="true">
+        <div class="button-bar  ">
+            <button ng-click="order('title')" class="button button-positive">A..Z
+                    <span class="ion-arrow-up-b" ng-show="predicate === 'title'" ng-class="{reverse:reverse}"></span>    
+            </button>
+            <button ng-click="order('release_date')" class="button button-positive">Newest
+                        <span class="ion-arrow-up-b" ng-show="predicate === 'release_date'" ng-class="{reverse:reverse}"></span>    
+            </button>
+            <button ng-click="order('vote_average')" class="button button-positive">Top rated
+                        <span class="ion-arrow-up-b" ng-show="predicate === 'vote_average'" ng-class="{reverse:reverse}"></span>    
+            </button>
+        </div>
+         <div class="item-input-inset">
+             <label class="item-input-wrapper">
+                 <i class="icon ion-ios-search"></i>
+                 <input type="search" ng-model="searchString" placeholder="Search">
+             </label>
+        </div>
+        <ion-list>
+            <ion-item ng-repeat="movie in data  | orderBy:predicate:reverse" class="item-avatar"
+ui-sref="menu.movies-detail({'id': movie.id})">
+
+
+                <img src="http://image.tmdb.org/t/p/w500{{movie.backdrop_path}}" class="fit-thumbnail"/>
+                <h2>{{::movie.title}}</h2>
+                <p>{{::movie.vote_average}} / 10</p>
+            </ion-item>
+
+        </ion-list>
+        <ion-infinite-scroll distance="3"
+                             on-infinite="loadMoreData()"
+                             ng-if="!moredata" spinner="ripple">
+
+        </ion-infinite-scroll>
+
+    </ion-content>
+</ion-view>
