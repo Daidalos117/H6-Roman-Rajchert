@@ -5,8 +5,7 @@ app.controller('MoviesListCtrl', function ($scope, MoviesService) {
     var pages = [];
     $scope.loadMoreData=function()
     {
-
-
+        
             MoviesService.getMovies(null);
             if (!$scope.data) {
                 $scope.data = {};
@@ -16,19 +15,10 @@ app.controller('MoviesListCtrl', function ($scope, MoviesService) {
                 $scope.$broadcast('scroll.infiniteScrollComplete');
             }
 
-
-
-
             if (MoviesService.page == 300) {
                 $scope.moredata = true;
             }
 
-
-
-
-
-
-        
     };
 
     $scope.data = {};
